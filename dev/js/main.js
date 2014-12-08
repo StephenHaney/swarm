@@ -98,9 +98,8 @@
 
                 // play again click event
                 $('#play-again').on('click', function() {
-                    tween.to($('#thanks'), 2, { autoAlpha: 0 });
-                    watchmen.restart();
-                })
+                    location.reload();
+                });
             });
         },
 
@@ -144,6 +143,9 @@
             this.hero.position.y = this.hero.initialPosition.y;
             this.hero.life = this.hero.initialLife;
             this.hero.image = watchmen.faces.hero[this.hero.life - 1];
+            this.hero.opacity = 1;
+
+            this.won = false;
 
             for (var gi = 0; gi < this.goals.length; gi++) {
                 this.goals[gi].reset();
@@ -158,6 +160,8 @@
             }
             this.hero.winAnimation();
             tween.to(this, 2, { baddieOpacity: 0 });
+
+            watchmen.sounds.win.play();
 
             setTimeout( function() {
                 // show the credits after a short delay
@@ -194,6 +198,21 @@
 
             watchmen.sounds.pickup = new Howl({
                 urls: ['sound/pickup.mp3'],
+                volume: 0.6
+            });
+
+            watchmen.sounds.death = new Howl({
+                urls: ['sound/death.mp3'],
+                volume: 0.6
+            });
+
+            watchmen.sounds.goalSpawn = new Howl({
+                urls: ['sound/goalspawn.mp3'],
+                volume: 0.6
+            });
+
+            watchmen.sounds.win = new Howl({
+                urls: ['sound/win.mp3'],
                 volume: 0.6
             });
         },

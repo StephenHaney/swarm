@@ -23,7 +23,6 @@
 
             // throttle:
             if (current > this.lastDamageTaken + 1200) {
-                watchmen.sounds.hurt.play();
                 this.lastDamageTaken = current;
 
                 this.life--;
@@ -31,7 +30,11 @@
                 if (this.life === 0) {
                     // game over!
                     watchmen.restart();
+                    watchmen.sounds.death.play();
                     return;
+                }
+                else {
+                    watchmen.sounds.hurt.play();
                 }
 
                 this.damageAnimation();
@@ -79,7 +82,7 @@
             tween.to(this.size, 8, { width: newSize.x, height: newSize.y });
             tween.to(this.position, 8, { x: newPosition.x, y: newPosition.y });
             tween.to(this, 5, { opacity: 0 });
-        }
+        };
 
         this.draw = function(deltaTime) {
             if (this.opacity !== 1) {

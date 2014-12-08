@@ -108,7 +108,7 @@
                 }
             }
 
-            if (this.visible && !this.pulsing) { this.pulse(); }
+            if (this.visible && !this.won && !this.pulsing) { this.pulse(); }
         };
 
         this.collected = function() {
@@ -135,6 +135,7 @@
                     watchmen.win();
                 }
                 else {
+                    watchmen.sounds.goalSpawn.play();
                     var nextGroup = this.group + 1;
 
                     for (var gi = 0; gi < watchmen.goals.length; gi++) {
@@ -147,6 +148,9 @@
         };
 
         this.finalAnimation = function() {
+            tween.killTweensOf(this);
+            tween.killTweensOf(this.size);
+            tween.killTweensOf(this.position);
             var goal = this;
 
             var newSize = {
