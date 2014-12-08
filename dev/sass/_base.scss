@@ -1,0 +1,50 @@
+html {
+    font-size: 62.5%; // 1 rem = 10px
+    box-sizing: border-box;
+    background-color: #111;
+    overflow: hidden;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* prevent FOUT from typekit */
+.wf-loading {
+    visibility: hidden;
+}
+
+.wf-active {
+    visibility: visible;
+}
+
+canvas {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -500px;
+    margin-top: -500px;
+}
+
+#thanks {
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    margin-left: -250px;
+    padding: 50px;
+    text-align: center;
+    width: 500px;
+    background-color: #fff;
+    border-radius: 35px;
+    font-size: 1.8rem;
+    color: #216905;
+    line-height: 3.75rem;
+    visibility: hidden;
+    z-index: 5000;
+    letter-spacing: 0.1rem;
+
+    a {
+        text-decoration: none;
+        color: #36379a;
+    }
+}

@@ -1,0 +1,17 @@
+@mixin font-size($sizeValue: 1.6) {
+    font-size: ($sizeValue * 10) + px;
+    font-size: $sizeValue + rem;
+}
+
+@mixin line-height($sizeValue: 1.6) {
+    line-height: ($sizeValue * 10) + px;
+    line-height: $sizeValue + rem;
+}
+
+@mixin float-container() {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
